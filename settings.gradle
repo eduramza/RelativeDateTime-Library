@@ -1,0 +1,3 @@
+include ':relativetime'
+include ':app'
+rootProject.name = "Test Application"
