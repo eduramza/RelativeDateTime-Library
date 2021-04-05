@@ -3,25 +3,37 @@ package com.eduramza.relativetime
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-class UnixToHumanTimeAgo {
+class RelativeTimeAgo {
 
     companion object{
 
         private const val DAYS_ON_THE_YEAR = 365
         private const val DAYS_ON_THE_MONTH = 30
 
-        fun relativeTimePast(unixTime: Long): String{
+        fun relativeUnixTimePast(unixTime: Long): String{
             val unixDate = Date(unixTime * 1000)
 
             return calculateTimeAgo(getNow() - unixDate.time, LanguageType.EN_US)
 
         }
 
-        fun relativeTimePast(unixTime: Long, language: LanguageType): String{
+        fun relativeUnixTimePast(unixTime: Long, language: LanguageType): String{
             val unixDate = Date(unixTime * 1000)
 
             return calculateTimeAgo(getNow() - unixDate.time, language)
 
+        }
+
+        fun relativeTimePast(time: Long): String{
+            val unixDate = Date(time)
+
+            return calculateTimeAgo(getNow() - unixDate.time, LanguageType.EN_US)
+        }
+
+        fun relativeTimePast(time: Long, language: LanguageType): String{
+            val unixDate = Date(time)
+
+            return calculateTimeAgo(getNow() - unixDate.time, language)
         }
 
         private fun calculateTimeAgo(diff: Long, language: LanguageType): String{
